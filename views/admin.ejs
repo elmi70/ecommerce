@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/card.css">
+    <title>Admin Panel</title>
+</head>
+<body style="background: #09161d;">
+<div class="container" >
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link  btn btn-success mt-4" href="/logout" >Sign Out  <i class="fas fa-sign-out-alt"></i></a>
+        </li>
+    </ul>
+    <div class="m-4 text-center">
+        <h2 class="text-white">Admin Panel</h2>
+        <h5 class="text-white">Add new Product <span style="color: yellow"><strong>|</strong></span> Delete a Product</h5>
+
+    </div>
+    <div class="row mb-3">
+        <a href="/new" class="btn btn-success d-flex align-items-center"><i
+                    class="material-icons mr-2">add_circle</i>
+            Add new Product</a>
+    </div>
+
+    <% if(products.length<1){%>
+        <p class="text-white">No Products are available at the moment</p>
+    <%  } %>
+    <% products.forEach(product=>{ %>
+        <div class="card" >
+            <div class="imgbx">
+                <img src="/uploads/images/<%= product.img %>" alt="">
+            </div>
+            <div class="contentBx">
+                <h3><%= product.productName %></h3>
+                <h2 class="price"><%= product.price %> <small>euro</small></h2>
+
+                <form action="<%=product.id%>?_method=DELETE" method="POST">
+                    <!--<a class="buy">Delete</a> -->
+                    <button class="btn btn-success"><i class="fas fa-trash-alt"></i> Delete</button>
+                </form>
+            </div>
+        </div>
+
+    <% }) %>
+
+</div>
+</body>
+</html>

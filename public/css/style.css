@@ -1,0 +1,22 @@
+body {
+    background: #2c2c2c !important;
+}
+.card-img {
+
+    background: no-repeat url("../images/background.png");
+    background-size: cover;
+    background-position-x: center;
+}
+.container{
+    margin-top: 8%;
+}
+.inner{
+    overflow: hidden;
+}
+.inner img{
+    transition: all 1.5s ease;
+}
+.inner:hover img{
+    transform: scale(1.5);
+}
+
